@@ -2,7 +2,7 @@ package controle_viagens
 
 
 
-
+import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(PassageirosController)
@@ -11,7 +11,7 @@ class PassageirosControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        
+        // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
     }
 

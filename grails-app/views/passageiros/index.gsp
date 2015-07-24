@@ -24,11 +24,13 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="cpf" title="${message(code: 'passageiros.cpf.label', default: 'Cpf')}" />
+						<g:sortableColumn property="nome" title="${message(code: 'passageiros.nome.label', default: 'Nome')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'passageiros.email.label', default: 'Email')}" />
 					
-						<g:sortableColumn property="nome" title="${message(code: 'passageiros.nome.label', default: 'Nome')}" />
+						<g:sortableColumn property="cpf" title="${message(code: 'passageiros.cpf.label', default: 'Cpf')}" />
+					
+						<g:sortableColumn property="id_passageiros" title="${message(code: 'passageiros.id_passageiros.label', default: 'Idpassageiros')}" />
 					
 						<g:sortableColumn property="telefone" title="${message(code: 'passageiros.telefone.label', default: 'Telefone')}" />
 					
@@ -38,11 +40,13 @@
 				<g:each in="${passageirosInstanceList}" status="i" var="passageirosInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${passageirosInstance.id}">${fieldValue(bean: passageirosInstance, field: "cpf")}</g:link></td>
+						<td><g:link action="show" id="${passageirosInstance.id}">${fieldValue(bean: passageirosInstance, field: "nome")}</g:link></td>
 					
 						<td>${fieldValue(bean: passageirosInstance, field: "email")}</td>
 					
-						<td>${fieldValue(bean: passageirosInstance, field: "nome")}</td>
+						<td>${fieldValue(bean: passageirosInstance, field: "cpf")}</td>
+					
+						<td>${fieldValue(bean: passageirosInstance, field: "id_passageiros")}</td>
 					
 						<td>${fieldValue(bean: passageirosInstance, field: "telefone")}</td>
 					

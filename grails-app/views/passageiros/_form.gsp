@@ -2,6 +2,24 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'nome', 'error')} required">
+	<label for="nome">
+		<g:message code="passageiros.nome.label" default="Nome" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="nome" required="" value="${passageirosInstance?.nome}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'email', 'error')} required">
+	<label for="email">
+		<g:message code="passageiros.email.label" default="Email" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field type="email" name="email" required="" value="${passageirosInstance?.email}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'cpf', 'error')} required">
 	<label for="cpf">
 		<g:message code="passageiros.cpf.label" default="Cpf" />
@@ -11,21 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'email', 'error')} required">
-	<label for="email">
-		<g:message code="passageiros.email.label" default="Email" />
+<div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'id_passageiros', 'error')} required">
+	<label for="id_passageiros">
+		<g:message code="passageiros.id_passageiros.label" default="Idpassageiros" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="email" required="" value="${passageirosInstance?.email}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'nome', 'error')} required">
-	<label for="nome">
-		<g:message code="passageiros.nome.label" default="Nome" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="nome" required="" value="${passageirosInstance?.nome}"/>
+	<g:field name="id_passageiros" type="number" value="${passageirosInstance.id_passageiros}" required=""/>
 
 </div>
 

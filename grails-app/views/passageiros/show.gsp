@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list passageiros">
 			
-				<g:if test="${passageirosInstance?.cpf}">
+				<g:if test="${passageirosInstance?.nome}">
 				<li class="fieldcontain">
-					<span id="cpf-label" class="property-label"><g:message code="passageiros.cpf.label" default="Cpf" /></span>
+					<span id="nome-label" class="property-label"><g:message code="passageiros.nome.label" default="Nome" /></span>
 					
-						<span class="property-value" aria-labelledby="cpf-label"><g:fieldValue bean="${passageirosInstance}" field="cpf"/></span>
+						<span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${passageirosInstance}" field="nome"/></span>
 					
 				</li>
 				</g:if>
@@ -41,11 +41,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${passageirosInstance?.nome}">
+				<g:if test="${passageirosInstance?.cpf}">
 				<li class="fieldcontain">
-					<span id="nome-label" class="property-label"><g:message code="passageiros.nome.label" default="Nome" /></span>
+					<span id="cpf-label" class="property-label"><g:message code="passageiros.cpf.label" default="Cpf" /></span>
 					
-						<span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${passageirosInstance}" field="nome"/></span>
+						<span class="property-value" aria-labelledby="cpf-label"><g:fieldValue bean="${passageirosInstance}" field="cpf"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${passageirosInstance?.id_passageiros}">
+				<li class="fieldcontain">
+					<span id="id_passageiros-label" class="property-label"><g:message code="passageiros.id_passageiros.label" default="Idpassageiros" /></span>
+					
+						<span class="property-value" aria-labelledby="id_passageiros-label"><g:fieldValue bean="${passageirosInstance}" field="id_passageiros"/></span>
 					
 				</li>
 				</g:if>

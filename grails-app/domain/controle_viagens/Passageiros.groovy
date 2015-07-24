@@ -7,7 +7,7 @@ class Passageiros {
 	String nome
 	String telefone
 	String email
-	
+	//teste
 	
     static constraints = {
 		
