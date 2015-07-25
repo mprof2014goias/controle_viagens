@@ -13,12 +13,16 @@ class Passageiros {
 		
 		nome (nullable:false, blank:false) 
 		email (nullable:false, blank:false, email:true)
-		   }
+		   
+		}
 
 	static mapping = {
 		
 		version false
 		
 		}
+	
+	
+	
 	
 	}

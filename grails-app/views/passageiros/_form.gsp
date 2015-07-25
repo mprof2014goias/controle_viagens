@@ -29,14 +29,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'id_passageiros', 'error')} required">
-	<label for="id_passageiros">
-		<g:message code="passageiros.id_passageiros.label" default="Idpassageiros" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="id_passageiros" type="number" value="${passageirosInstance.id_passageiros}" required=""/>
 
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: passageirosInstance, field: 'telefone', 'error')} required">
 	<label for="telefone">

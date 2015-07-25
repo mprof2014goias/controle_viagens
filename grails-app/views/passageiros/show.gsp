@@ -50,15 +50,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${passageirosInstance?.id_passageiros}">
-				<li class="fieldcontain">
-					<span id="id_passageiros-label" class="property-label"><g:message code="passageiros.id_passageiros.label" default="Idpassageiros" /></span>
-					
-						<span class="property-value" aria-labelledby="id_passageiros-label"><g:fieldValue bean="${passageirosInstance}" field="id_passageiros"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${passageirosInstance?.telefone}">
 				<li class="fieldcontain">
 					<span id="telefone-label" class="property-label"><g:message code="passageiros.telefone.label" default="Telefone" /></span>

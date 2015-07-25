@@ -30,8 +30,6 @@
 					
 						<g:sortableColumn property="cpf" title="${message(code: 'passageiros.cpf.label', default: 'Cpf')}" />
 					
-						<g:sortableColumn property="id_passageiros" title="${message(code: 'passageiros.id_passageiros.label', default: 'Idpassageiros')}" />
-					
 						<g:sortableColumn property="telefone" title="${message(code: 'passageiros.telefone.label', default: 'Telefone')}" />
 					
 					</tr>
@@ -45,8 +43,6 @@
 						<td>${fieldValue(bean: passageirosInstance, field: "email")}</td>
 					
 						<td>${fieldValue(bean: passageirosInstance, field: "cpf")}</td>
-					
-						<td>${fieldValue(bean: passageirosInstance, field: "id_passageiros")}</td>
 					
 						<td>${fieldValue(bean: passageirosInstance, field: "telefone")}</td>
 					
