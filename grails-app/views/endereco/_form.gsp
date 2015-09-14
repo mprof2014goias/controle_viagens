@@ -38,8 +38,6 @@
 
 </div>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'logradouro', 'error')} required">
 	<label for="logradouro">
 		<g:message code="endereco.logradouro.label" default="Logradouro" />

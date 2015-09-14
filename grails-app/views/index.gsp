@@ -95,15 +95,15 @@
 			
 
 <li>
-<g:link class="menu" controller="passageiros" action="index"> Cadastro de Passageiros </g:link></span>
+<g:link class="menu" controller="passageiro" action="index"> Cadastro de Passageiros </g:link></span>
 </li>
 
 <li>
-<g:link class="menu" controller="viagens" action="index"> Cadastro de Viagens </g:link></span>
+<g:link class="menu" controller="viagen" action="index"> Cadastro de Viagens </g:link></span>
 </li>
 		
 <li>
-<g:link class="menu" controller="viagens" action="index"> Cadastro de Viagens </g:link></span>
+<g:link class="menu" controller="endereco" action="index"> Cadastro de Endereços </g:link></span>
 </li>		
 				
 			</ul>

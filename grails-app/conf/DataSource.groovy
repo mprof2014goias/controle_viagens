@@ -23,7 +23,7 @@ environments {
             //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
 			url = "jdbc:mysql://localhost/scvo"
 			username = "root"
-			password = "123"
+			password = "root"
 		}
     }
     test {

@@ -3,27 +3,19 @@ package controle_viagens
 
 class Endereco {
 
-	Integer id_endereco
-	String descricao
-	Integer cep
-	String logradouro
-	String numero
-	String complemento
-	String bairro
-	String municipio
-	String uf
-	
-	
-    static constraints = {
-    }
-	
-	
-	
-	static mapping = {
-		
-		version false
-		
-		}
-	
-	
+	Integer	id
+	String	descricao
+	Integer	cep
+	String	logradouro
+	String	numero
+	String	complemento
+	String	bairro
+	String	municipio
+	String	uf
+
+
+	static constraints = {
 	}
+
+	static mapping = { version false }
+}

@@ -59,15 +59,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${enderecoInstance?.id_endereco}">
-				<li class="fieldcontain">
-					<span id="id_endereco-label" class="property-label"><g:message code="endereco.id_endereco.label" default="Idendereco" /></span>
-					
-						<span class="property-value" aria-labelledby="id_endereco-label"><g:fieldValue bean="${enderecoInstance}" field="id_endereco"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${enderecoInstance?.logradouro}">
 				<li class="fieldcontain">
 					<span id="logradouro-label" class="property-label"><g:message code="endereco.logradouro.label" default="Logradouro" /></span>

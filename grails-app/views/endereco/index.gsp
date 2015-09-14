@@ -32,9 +32,9 @@
 					
 						<g:sortableColumn property="descricao" title="${message(code: 'endereco.descricao.label', default: 'Descricao')}" />
 					
-						<g:sortableColumn property="id_endereco" title="${message(code: 'endereco.id_endereco.label', default: 'Idendereco')}" />
-					
 						<g:sortableColumn property="logradouro" title="${message(code: 'endereco.logradouro.label', default: 'Logradouro')}" />
+					
+						<g:sortableColumn property="municipio" title="${message(code: 'endereco.municipio.label', default: 'Municipio')}" />
 					
 					</tr>
 				</thead>
@@ -50,9 +50,9 @@
 					
 						<td>${fieldValue(bean: enderecoInstance, field: "descricao")}</td>
 					
-						<td>${fieldValue(bean: enderecoInstance, field: "id_endereco")}</td>
-					
 						<td>${fieldValue(bean: enderecoInstance, field: "logradouro")}</td>
+					
+						<td>${fieldValue(bean: enderecoInstance, field: "municipio")}</td>
 					
 					</tr>
 				</g:each>
