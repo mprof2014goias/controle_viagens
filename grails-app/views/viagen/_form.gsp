@@ -2,21 +2,21 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'destino', 'error')} required">
-	<label for="destino">
-		<g:message code="viagen.destino.label" default="Destino" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="destino" name="destino.id" from="${controle_viagens.Endereco.list()}" optionKey="id" required="" value="${viagenInstance?.destino?.id}" class="many-to-one"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'ida', 'error')} required">
 	<label for="ida">
 		<g:message code="viagen.ida.label" default="Ida" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="ida" precision="day"  value="${viagenInstance?.ida}"  />
+	<g:datePicker name="ida" precision="minute"  value="${viagenInstance?.ida}"  />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'volta', 'error')} required">
+	<label for="volta">
+		<g:message code="viagen.volta.label" default="Volta" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="volta" precision="minute"  value="${viagenInstance?.volta}"  />
 
 </div>
 
@@ -25,16 +25,16 @@
 		<g:message code="viagen.objetivo.label" default="Objetivo" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="objetivo" required="" value="${viagenInstance?.objetivo}"/>
+	<g:textArea name="objetivo" cols="40" rows="5" required="" value="${viagenInstance?.objetivo}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'origem', 'error')} required">
-	<label for="origem">
-		<g:message code="viagen.origem.label" default="Origem" />
+<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'status', 'error')} required">
+	<label for="status">
+		<g:message code="viagen.status.label" default="Status" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="origem" name="origem.id" from="${controle_viagens.Endereco.list()}" optionKey="id" required="" value="${viagenInstance?.origem?.id}" class="many-to-one"/>
+	<g:select name="status" from="${viagenInstance.constraints.status.inList}" required="" value="${viagenInstance?.status}" valueMessagePrefix="viagen.status"/>
 
 </div>
 
@@ -47,21 +47,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'status', 'error')} ">
-	<label for="status">
-		<g:message code="viagen.status.label" default="Status" />
-		
+<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'origem', 'error')} required">
+	<label for="origem">
+		<g:message code="viagen.origem.label" default="Origem" />
+		<span class="required-indicator">*</span>
 	</label>
-	<g:checkBox name="status" value="${viagenInstance?.status}" />
+	<g:select id="origem" name="origem.id" from="${controle_viagens.Endereco.list()}" optionKey="id" required="" value="${viagenInstance?.origem?.id}" class="many-to-one"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'volta', 'error')} required">
-	<label for="volta">
-		<g:message code="viagen.volta.label" default="Volta" />
+<div class="fieldcontain ${hasErrors(bean: viagenInstance, field: 'destino', 'error')} required">
+	<label for="destino">
+		<g:message code="viagen.destino.label" default="Destino" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="volta" precision="day"  value="${viagenInstance?.volta}"  />
+	<g:select id="destino" name="destino.id" from="${controle_viagens.Endereco.list()}" optionKey="id" required="" value="${viagenInstance?.destino?.id}" class="many-to-one"/>
 
 </div>
 

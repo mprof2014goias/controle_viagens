@@ -11,6 +11,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: passageiroInstance, field: 'cpf', 'error')} required">
+	<label for="cpf">
+		<g:message code="passageiro.cpf.label" default="Cpf" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="cpf" maxlength="11" pattern="${passageiroInstance.constraints.cpf.matches}" required="" value="${passageiroInstance?.cpf}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: passageiroInstance, field: 'telefone', 'error')} required">
+	<label for="telefone">
+		<g:message code="passageiro.telefone.label" default="Telefone" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="telefone" maxlength="11" required="" value="${passageiroInstance?.telefone}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: passageiroInstance, field: 'email', 'error')} required">
 	<label for="email">
 		<g:message code="passageiro.email.label" default="Email" />
@@ -20,30 +38,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: passageiroInstance, field: 'cpf', 'error')} required">
-	<label for="cpf">
-		<g:message code="passageiro.cpf.label" default="Cpf" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="cpf" required="" value="${passageiroInstance?.cpf}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: passageiroInstance, field: 'endereco', 'error')} required">
 	<label for="endereco">
 		<g:message code="passageiro.endereco.label" default="Endereco" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="endereco" name="endereco.id" from="${controle_viagens.Endereco.list()}" optionKey="id" required="" value="${passageiroInstance?.endereco?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: passageiroInstance, field: 'telefone', 'error')} required">
-	<label for="telefone">
-		<g:message code="passageiro.telefone.label" default="Telefone" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="telefone" required="" value="${passageiroInstance?.telefone}"/>
 
 </div>
 

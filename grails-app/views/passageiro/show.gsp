@@ -32,15 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${passageiroInstance?.email}">
-				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="passageiro.email.label" default="Email" /></span>
-					
-						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${passageiroInstance}" field="email"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${passageiroInstance?.cpf}">
 				<li class="fieldcontain">
 					<span id="cpf-label" class="property-label"><g:message code="passageiro.cpf.label" default="Cpf" /></span>
@@ -50,20 +41,29 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${passageiroInstance?.endereco}">
-				<li class="fieldcontain">
-					<span id="endereco-label" class="property-label"><g:message code="passageiro.endereco.label" default="Endereco" /></span>
-					
-						<span class="property-value" aria-labelledby="endereco-label"><g:link controller="endereco" action="show" id="${passageiroInstance?.endereco?.id}">${passageiroInstance?.endereco?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${passageiroInstance?.telefone}">
 				<li class="fieldcontain">
 					<span id="telefone-label" class="property-label"><g:message code="passageiro.telefone.label" default="Telefone" /></span>
 					
 						<span class="property-value" aria-labelledby="telefone-label"><g:fieldValue bean="${passageiroInstance}" field="telefone"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${passageiroInstance?.email}">
+				<li class="fieldcontain">
+					<span id="email-label" class="property-label"><g:message code="passageiro.email.label" default="Email" /></span>
+					
+						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${passageiroInstance}" field="email"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${passageiroInstance?.endereco}">
+				<li class="fieldcontain">
+					<span id="endereco-label" class="property-label"><g:message code="passageiro.endereco.label" default="Endereco" /></span>
+					
+						<span class="property-value" aria-labelledby="endereco-label"><g:link controller="endereco" action="show" id="${passageiroInstance?.endereco?.id}">${passageiroInstance?.endereco?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

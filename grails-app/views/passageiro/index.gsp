@@ -26,13 +26,13 @@
 					
 						<g:sortableColumn property="nome" title="${message(code: 'passageiro.nome.label', default: 'Nome')}" />
 					
-						<g:sortableColumn property="email" title="${message(code: 'passageiro.email.label', default: 'Email')}" />
-					
 						<g:sortableColumn property="cpf" title="${message(code: 'passageiro.cpf.label', default: 'Cpf')}" />
 					
-						<th><g:message code="passageiro.endereco.label" default="Endereco" /></th>
-					
 						<g:sortableColumn property="telefone" title="${message(code: 'passageiro.telefone.label', default: 'Telefone')}" />
+					
+						<g:sortableColumn property="email" title="${message(code: 'passageiro.email.label', default: 'Email')}" />
+					
+						<th><g:message code="passageiro.endereco.label" default="Endereco" /></th>
 					
 					</tr>
 				</thead>
@@ -42,13 +42,13 @@
 					
 						<td><g:link action="show" id="${passageiroInstance.id}">${fieldValue(bean: passageiroInstance, field: "nome")}</g:link></td>
 					
-						<td>${fieldValue(bean: passageiroInstance, field: "email")}</td>
-					
 						<td>${fieldValue(bean: passageiroInstance, field: "cpf")}</td>
 					
-						<td>${fieldValue(bean: passageiroInstance, field: "endereco")}</td>
-					
 						<td>${fieldValue(bean: passageiroInstance, field: "telefone")}</td>
+					
+						<td>${fieldValue(bean: passageiroInstance, field: "email")}</td>
+					
+						<td>${fieldValue(bean: passageiroInstance, field: "endereco")}</td>
 					
 					</tr>
 				</g:each>

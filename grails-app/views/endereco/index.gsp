@@ -24,17 +24,17 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="bairro" title="${message(code: 'endereco.bairro.label', default: 'Bairro')}" />
-					
 						<g:sortableColumn property="cep" title="${message(code: 'endereco.cep.label', default: 'Cep')}" />
-					
-						<g:sortableColumn property="complemento" title="${message(code: 'endereco.complemento.label', default: 'Complemento')}" />
 					
 						<g:sortableColumn property="descricao" title="${message(code: 'endereco.descricao.label', default: 'Descricao')}" />
 					
 						<g:sortableColumn property="logradouro" title="${message(code: 'endereco.logradouro.label', default: 'Logradouro')}" />
 					
-						<g:sortableColumn property="municipio" title="${message(code: 'endereco.municipio.label', default: 'Municipio')}" />
+						<g:sortableColumn property="numero" title="${message(code: 'endereco.numero.label', default: 'Numero')}" />
+					
+						<g:sortableColumn property="complemento" title="${message(code: 'endereco.complemento.label', default: 'Complemento')}" />
+					
+						<g:sortableColumn property="bairro" title="${message(code: 'endereco.bairro.label', default: 'Bairro')}" />
 					
 					</tr>
 				</thead>
@@ -42,17 +42,17 @@
 				<g:each in="${enderecoInstanceList}" status="i" var="enderecoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${enderecoInstance.id}">${fieldValue(bean: enderecoInstance, field: "bairro")}</g:link></td>
-					
-						<td>${fieldValue(bean: enderecoInstance, field: "cep")}</td>
-					
-						<td>${fieldValue(bean: enderecoInstance, field: "complemento")}</td>
+						<td><g:link action="show" id="${enderecoInstance.id}">${fieldValue(bean: enderecoInstance, field: "cep")}</g:link></td>
 					
 						<td>${fieldValue(bean: enderecoInstance, field: "descricao")}</td>
 					
 						<td>${fieldValue(bean: enderecoInstance, field: "logradouro")}</td>
 					
-						<td>${fieldValue(bean: enderecoInstance, field: "municipio")}</td>
+						<td>${fieldValue(bean: enderecoInstance, field: "numero")}</td>
+					
+						<td>${fieldValue(bean: enderecoInstance, field: "complemento")}</td>
+					
+						<td>${fieldValue(bean: enderecoInstance, field: "bairro")}</td>
 					
 					</tr>
 				</g:each>

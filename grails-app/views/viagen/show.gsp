@@ -23,20 +23,20 @@
 			</g:if>
 			<ol class="property-list viagen">
 			
-				<g:if test="${viagenInstance?.destino}">
-				<li class="fieldcontain">
-					<span id="destino-label" class="property-label"><g:message code="viagen.destino.label" default="Destino" /></span>
-					
-						<span class="property-value" aria-labelledby="destino-label"><g:link controller="endereco" action="show" id="${viagenInstance?.destino?.id}">${viagenInstance?.destino?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${viagenInstance?.ida}">
 				<li class="fieldcontain">
 					<span id="ida-label" class="property-label"><g:message code="viagen.ida.label" default="Ida" /></span>
 					
 						<span class="property-value" aria-labelledby="ida-label"><g:formatDate date="${viagenInstance?.ida}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${viagenInstance?.volta}">
+				<li class="fieldcontain">
+					<span id="volta-label" class="property-label"><g:message code="viagen.volta.label" default="Volta" /></span>
+					
+						<span class="property-value" aria-labelledby="volta-label"><g:formatDate date="${viagenInstance?.volta}" /></span>
 					
 				</li>
 				</g:if>
@@ -50,11 +50,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${viagenInstance?.origem}">
+				<g:if test="${viagenInstance?.status}">
 				<li class="fieldcontain">
-					<span id="origem-label" class="property-label"><g:message code="viagen.origem.label" default="Origem" /></span>
+					<span id="status-label" class="property-label"><g:message code="viagen.status.label" default="Status" /></span>
 					
-						<span class="property-value" aria-labelledby="origem-label"><g:link controller="endereco" action="show" id="${viagenInstance?.origem?.id}">${viagenInstance?.origem?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${viagenInstance}" field="status"/></span>
 					
 				</li>
 				</g:if>
@@ -68,20 +68,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${viagenInstance?.status}">
+				<g:if test="${viagenInstance?.origem}">
 				<li class="fieldcontain">
-					<span id="status-label" class="property-label"><g:message code="viagen.status.label" default="Status" /></span>
+					<span id="origem-label" class="property-label"><g:message code="viagen.origem.label" default="Origem" /></span>
 					
-						<span class="property-value" aria-labelledby="status-label"><g:formatBoolean boolean="${viagenInstance?.status}" /></span>
+						<span class="property-value" aria-labelledby="origem-label"><g:link controller="endereco" action="show" id="${viagenInstance?.origem?.id}">${viagenInstance?.origem?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${viagenInstance?.volta}">
+				<g:if test="${viagenInstance?.destino}">
 				<li class="fieldcontain">
-					<span id="volta-label" class="property-label"><g:message code="viagen.volta.label" default="Volta" /></span>
+					<span id="destino-label" class="property-label"><g:message code="viagen.destino.label" default="Destino" /></span>
 					
-						<span class="property-value" aria-labelledby="volta-label"><g:formatDate date="${viagenInstance?.volta}" /></span>
+						<span class="property-value" aria-labelledby="destino-label"><g:link controller="endereco" action="show" id="${viagenInstance?.destino?.id}">${viagenInstance?.destino?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

@@ -23,29 +23,11 @@
 			</g:if>
 			<ol class="property-list endereco">
 			
-				<g:if test="${enderecoInstance?.bairro}">
-				<li class="fieldcontain">
-					<span id="bairro-label" class="property-label"><g:message code="endereco.bairro.label" default="Bairro" /></span>
-					
-						<span class="property-value" aria-labelledby="bairro-label"><g:fieldValue bean="${enderecoInstance}" field="bairro"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${enderecoInstance?.cep}">
 				<li class="fieldcontain">
 					<span id="cep-label" class="property-label"><g:message code="endereco.cep.label" default="Cep" /></span>
 					
 						<span class="property-value" aria-labelledby="cep-label"><g:fieldValue bean="${enderecoInstance}" field="cep"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${enderecoInstance?.complemento}">
-				<li class="fieldcontain">
-					<span id="complemento-label" class="property-label"><g:message code="endereco.complemento.label" default="Complemento" /></span>
-					
-						<span class="property-value" aria-labelledby="complemento-label"><g:fieldValue bean="${enderecoInstance}" field="complemento"/></span>
 					
 				</li>
 				</g:if>
@@ -68,20 +50,38 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${enderecoInstance?.municipio}">
-				<li class="fieldcontain">
-					<span id="municipio-label" class="property-label"><g:message code="endereco.municipio.label" default="Municipio" /></span>
-					
-						<span class="property-value" aria-labelledby="municipio-label"><g:fieldValue bean="${enderecoInstance}" field="municipio"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${enderecoInstance?.numero}">
 				<li class="fieldcontain">
 					<span id="numero-label" class="property-label"><g:message code="endereco.numero.label" default="Numero" /></span>
 					
 						<span class="property-value" aria-labelledby="numero-label"><g:fieldValue bean="${enderecoInstance}" field="numero"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${enderecoInstance?.complemento}">
+				<li class="fieldcontain">
+					<span id="complemento-label" class="property-label"><g:message code="endereco.complemento.label" default="Complemento" /></span>
+					
+						<span class="property-value" aria-labelledby="complemento-label"><g:fieldValue bean="${enderecoInstance}" field="complemento"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${enderecoInstance?.bairro}">
+				<li class="fieldcontain">
+					<span id="bairro-label" class="property-label"><g:message code="endereco.bairro.label" default="Bairro" /></span>
+					
+						<span class="property-value" aria-labelledby="bairro-label"><g:fieldValue bean="${enderecoInstance}" field="bairro"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${enderecoInstance?.municipio}">
+				<li class="fieldcontain">
+					<span id="municipio-label" class="property-label"><g:message code="endereco.municipio.label" default="Municipio" /></span>
+					
+						<span class="property-value" aria-labelledby="municipio-label"><g:fieldValue bean="${enderecoInstance}" field="municipio"/></span>
 					
 				</li>
 				</g:if>

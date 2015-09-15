@@ -24,17 +24,17 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="viagen.destino.label" default="Destino" /></th>
-					
 						<g:sortableColumn property="ida" title="${message(code: 'viagen.ida.label', default: 'Ida')}" />
+					
+						<g:sortableColumn property="volta" title="${message(code: 'viagen.volta.label', default: 'Volta')}" />
 					
 						<g:sortableColumn property="objetivo" title="${message(code: 'viagen.objetivo.label', default: 'Objetivo')}" />
 					
-						<th><g:message code="viagen.origem.label" default="Origem" /></th>
+						<g:sortableColumn property="status" title="${message(code: 'viagen.status.label', default: 'Status')}" />
 					
 						<th><g:message code="viagen.passageiro.label" default="Passageiro" /></th>
 					
-						<g:sortableColumn property="status" title="${message(code: 'viagen.status.label', default: 'Status')}" />
+						<th><g:message code="viagen.origem.label" default="Origem" /></th>
 					
 					</tr>
 				</thead>
@@ -42,17 +42,17 @@
 				<g:each in="${viagenInstanceList}" status="i" var="viagenInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${viagenInstance.id}">${fieldValue(bean: viagenInstance, field: "destino")}</g:link></td>
+						<td><g:link action="show" id="${viagenInstance.id}">${fieldValue(bean: viagenInstance, field: "ida")}</g:link></td>
 					
-						<td><g:formatDate date="${viagenInstance.ida}" /></td>
+						<td><g:formatDate date="${viagenInstance.volta}" /></td>
 					
 						<td>${fieldValue(bean: viagenInstance, field: "objetivo")}</td>
 					
-						<td>${fieldValue(bean: viagenInstance, field: "origem")}</td>
+						<td>${fieldValue(bean: viagenInstance, field: "status")}</td>
 					
 						<td>${fieldValue(bean: viagenInstance, field: "passageiro")}</td>
 					
-						<td><g:formatBoolean boolean="${viagenInstance.status}" /></td>
+						<td>${fieldValue(bean: viagenInstance, field: "origem")}</td>
 					
 					</tr>
 				</g:each>
