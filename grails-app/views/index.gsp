@@ -99,7 +99,7 @@
 </li>
 
 <li>
-<g:link class="menu" controller="viagen" action="index"> Cadastro de Viagens </g:link></span>
+<g:link class="menu" controller="viagem" action="index"> Cadastro de Viagens </g:link></span>
 </li>
 		
 <li>

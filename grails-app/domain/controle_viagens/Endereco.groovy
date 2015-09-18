@@ -25,5 +25,5 @@ class Endereco {
 
 	static mapping = { version false }
 	
-	String toString() { "${descricao} - ${logradouro}, N° ${numero}, ${bairro}, ${municipio}-${uf}" }
+	String toString() { "${descricao}" }
 }

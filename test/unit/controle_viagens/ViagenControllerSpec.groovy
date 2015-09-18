@@ -5,8 +5,8 @@ package controle_viagens
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ViagenController)
-@Mock(Viagen)
+@TestFor(ViagemController)
+@Mock(Viagem)
 class ViagenControllerSpec extends Specification {
 
     def populateValidParams(params) {
@@ -38,7 +38,7 @@ class ViagenControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def viagen = new Viagen()
+            def viagen = new Viagem()
             viagen.validate()
             controller.save(viagen)
 
@@ -49,14 +49,14 @@ class ViagenControllerSpec extends Specification {
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            viagen = new Viagen(params)
+            viagen = new Viagem(params)
 
             controller.save(viagen)
 
         then:"A redirect is issued to the show action"
             response.redirectedUrl == '/viagen/show/1'
             controller.flash.message != null
-            Viagen.count() == 1
+            Viagem.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,7 +68,7 @@ class ViagenControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def viagen = new Viagen(params)
+            def viagen = new Viagem(params)
             controller.show(viagen)
 
         then:"A model is populated containing the domain instance"
@@ -84,7 +84,7 @@ class ViagenControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def viagen = new Viagen(params)
+            def viagen = new Viagem(params)
             controller.edit(viagen)
 
         then:"A model is populated containing the domain instance"
@@ -104,7 +104,7 @@ class ViagenControllerSpec extends Specification {
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def viagen = new Viagen()
+            def viagen = new Viagem()
             viagen.validate()
             controller.update(viagen)
 
@@ -115,7 +115,7 @@ class ViagenControllerSpec extends Specification {
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            viagen = new Viagen(params).save(flush: true)
+            viagen = new Viagem(params).save(flush: true)
             controller.update(viagen)
 
         then:"A redirect is issues to the show action"
@@ -136,16 +136,16 @@ class ViagenControllerSpec extends Specification {
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def viagen = new Viagen(params).save(flush: true)
+            def viagen = new Viagem(params).save(flush: true)
 
         then:"It exists"
-            Viagen.count() == 1
+            Viagem.count() == 1
 
         when:"The domain instance is passed to the delete action"
             controller.delete(viagen)
 
         then:"The instance is deleted"
-            Viagen.count() == 0
+            Viagem.count() == 0
             response.redirectedUrl == '/viagen/index'
             flash.message != null
     }
