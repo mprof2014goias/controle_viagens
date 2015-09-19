@@ -1,31 +1,30 @@
 <%@ page import="controle_viagens.Endereco"%>
 
 <script type="text/javascript">
-
-	$( document ).ready(function() {
-		$( "#cep" ).bind('blur', getEndereco);
+	$(document).ready(function() {
+		$("#cep").bind('blur', getEndereco);
 	});
-	
-    function getEndereco(){
-    	if ($(this).val().length == 8){
-         $.ajax({
-             url: "http://viacep.com.br/ws/"+$(this).val()+"/json/",
-             type:"GET",
-             dataType: 'json',
-             success: function(data) {
-                 $("#logradouro").val(data.logradouro);
-                 $('#numero').val(data.numero);
-                 $('#complemento').val(data.complemento);
-                 $('#bairro').val(data.bairro);
-                 $('#municipio').val(data.localidade);
-                 $('#uf').val(data.uf);
-             },
-             error: function(xhr){
-                 alert(xhr.responseText);
-             }
-         });
-    	}
-    }           
+
+	function getEndereco() {
+		if ($(this).val().length == 8) {
+			$.ajax({
+				url : "http://viacep.com.br/ws/" + $(this).val() + "/json/",
+				type : "GET",
+				dataType : 'json',
+				success : function(data) {
+					$("#logradouro").val(data.logradouro);
+					$('#numero').val(data.numero);
+					$('#complemento').val(data.complemento);
+					$('#bairro').val(data.bairro);
+					$('#municipio').val(data.localidade);
+					$('#uf').val(data.uf);
+				},
+				error : function(xhr) {
+					alert(xhr.responseText);
+				}
+			});
+		}
+	}
 </script>
 <div
 	class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'cep', 'error')} required">

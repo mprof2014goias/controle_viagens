@@ -8,97 +8,131 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class EnderecoController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Endereco.list(params), model:[enderecoInstanceCount: Endereco.count()]
-    }
+	def index(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		def enderecos = null
 
-    def show(Endereco enderecoInstance) {
-        respond enderecoInstance
-    }
+		if (params.keyword){
+			enderecos =  Endereco.createCriteria().list(params) {
+				or{
+					ilike('cep', "%${params.keyword}%")
+					ilike('descricao', "%${params.keyword}%")
+					ilike('logradouro', "%${params.keyword}%")
+					ilike('bairro', "%${params.keyword}%")
+					ilike('municipio', "%${params.keyword}%")
+					ilike('uf', "%${params.keyword}%")
+				}
+			}
 
-    def create() {
-        respond new Endereco(params)
-    }
+			if(enderecos.size() == 0){
+				flash.message = message(code: 'default.pesquisar.semresultado')
+			}
+		}
+		else{
+			enderecos = Endereco.list(params)
+		}
 
-    @Transactional
-    def save(Endereco enderecoInstance) {
-        if (enderecoInstance == null) {
-            notFound()
-            return
-        }
+		respond enderecos, model:[enderecoInstanceCount: enderecos.totalCount, keyword: params.keyword]
+	}
 
-        if (enderecoInstance.hasErrors()) {
-            respond enderecoInstance.errors, view:'create'
-            return
-        }
+	def show(Endereco enderecoInstance) {
+		respond enderecoInstance
+	}
 
-        enderecoInstance.save flush:true
+	def create() {
+		respond new Endereco(params)
+	}
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'endereco.label', default: 'Endereco'), enderecoInstance.id])
-                redirect enderecoInstance
-            }
-            '*' { respond enderecoInstance, [status: CREATED] }
-        }
-    }
+	@Transactional
+	def save(Endereco enderecoInstance) {
+		if (enderecoInstance == null) {
+			notFound()
+			return
+		}
 
-    def edit(Endereco enderecoInstance) {
-        respond enderecoInstance
-    }
+		if (enderecoInstance.hasErrors()) {
+			respond enderecoInstance.errors, view:'create'
+			return
+		}
 
-    @Transactional
-    def update(Endereco enderecoInstance) {
-        if (enderecoInstance == null) {
-            notFound()
-            return
-        }
+		enderecoInstance.save flush:true
 
-        if (enderecoInstance.hasErrors()) {
-            respond enderecoInstance.errors, view:'edit'
-            return
-        }
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [
+					message(code: 'endereco.label', default: 'Endereco'),
+					enderecoInstance.id
+				])
+				redirect enderecoInstance
+			}
+			'*' { respond enderecoInstance, [status: CREATED] }
+		}
+	}
 
-        enderecoInstance.save flush:true
+	def edit(Endereco enderecoInstance) {
+		respond enderecoInstance
+	}
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Endereco.label', default: 'Endereco'), enderecoInstance.id])
-                redirect enderecoInstance
-            }
-            '*'{ respond enderecoInstance, [status: OK] }
-        }
-    }
+	@Transactional
+	def update(Endereco enderecoInstance) {
+		if (enderecoInstance == null) {
+			notFound()
+			return
+		}
 
-    @Transactional
-    def delete(Endereco enderecoInstance) {
+		if (enderecoInstance.hasErrors()) {
+			respond enderecoInstance.errors, view:'edit'
+			return
+		}
 
-        if (enderecoInstance == null) {
-            notFound()
-            return
-        }
+		enderecoInstance.save flush:true
 
-        enderecoInstance.delete flush:true
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [
+					message(code: 'Endereco.label', default: 'Endereco'),
+					enderecoInstance.id
+				])
+				redirect enderecoInstance
+			}
+			'*'{ respond enderecoInstance, [status: OK] }
+		}
+	}
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Endereco.label', default: 'Endereco'), enderecoInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
+	@Transactional
+	def delete(Endereco enderecoInstance) {
 
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'endereco.label', default: 'Endereco'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
+		if (enderecoInstance == null) {
+			notFound()
+			return
+		}
+
+		enderecoInstance.delete flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.deleted.message', args: [
+					message(code: 'Endereco.label', default: 'Endereco'),
+					enderecoInstance.id
+				])
+				redirect action:"index", method:"GET"
+			}
+			'*'{ render status: NO_CONTENT }
+		}
+	}
+
+	protected void notFound() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [
+					message(code: 'endereco.label', default: 'Endereco'),
+					params.id
+				])
+				redirect action: "index", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }
