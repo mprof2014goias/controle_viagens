@@ -101,6 +101,7 @@ img {
 	border-bottom: 1px solid #CCCCCC;
 	margin: 0.8em 1em 0.3em;
 	padding: 0 0.25em;
+	display: inline-block;
 }
 
 .scaffold-list h1 {
@@ -593,4 +594,11 @@ th:hover, tr:hover {
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+form.pesquisar{
+	display: inline-block;
+	float: right;
+	margin: 0.8em 1em 0.3em;
+	padding: 0 0.25em;
 }

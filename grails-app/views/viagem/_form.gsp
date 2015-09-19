@@ -29,22 +29,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: viagemInstance, field: 'status', 'error')} required">
-	<label for="status">
-		<g:message code="viagem.status.label" default="Status" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="status" from="${viagemInstance.constraints.status.inList}" required="" value="${viagemInstance?.status}" valueMessagePrefix="viagem.status"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: viagemInstance, field: 'passageiro', 'error')} required">
 	<label for="passageiro">
 		<g:message code="viagem.passageiro.label" default="Passageiro" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="passageiro" name="passageiro.id" from="${controle_viagens.Passageiro.list()}" optionKey="id" required="" value="${viagemInstance?.passageiro?.id}" class="many-to-one"/>
-
+	<g:link class="create" controller="passageiro" action="create">${message(code: 'default.new.label', args: [message(code: 'passageiro.label', default: 'Passageiro')])}</g:link>
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: viagemInstance, field: 'origem', 'error')} required">
@@ -53,6 +45,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="origem" name="origem.id" from="${controle_viagens.Endereco.list()}" optionKey="id" required="" value="${viagemInstance?.origem?.id}" class="many-to-one"/>
+	<g:link class="create" controller="endereco" action="create">${message(code: 'default.new.label', args: [message(code: 'endereco.label', default: 'Endereco')])}</g:link>
 
 </div>
 
@@ -62,6 +55,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="destino" name="destino.id" from="${controle_viagens.Endereco.list()}" optionKey="id" required="" value="${viagemInstance?.destino?.id}" class="many-to-one"/>
+	<g:link class="create" controller="endereco" action="create">${message(code: 'default.new.label', args: [message(code: 'endereco.label', default: 'Endereco')])}</g:link>
 
 </div>
 

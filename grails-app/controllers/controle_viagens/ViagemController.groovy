@@ -1,7 +1,6 @@
 package controle_viagens
 
 import static org.springframework.http.HttpStatus.*
-import org.springframework.web.servlet.ModelAndView
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -11,7 +10,44 @@ class ViagemController {
 
 	def index(Integer max) {
 		params.max = Math.min(max ?: 10, 100)
-		respond Viagem.list(params), model:[viagemInstanceCount: Viagem.count()]
+		def viagens = null
+
+		if (params.keyword){
+			viagens =  Viagem.createCriteria().list(params) {
+				or{
+					ilike ('objetivo', "%${params.keyword}%")
+					ilike ('status', "%${params.keyword}%")
+					sqlRestriction("DATE_FORMAT(ida,'%d/%m/%Y %H:%i') LIKE '%${params.keyword}%'")
+					sqlRestriction("DATE_FORMAT(volta,'%d/%m/%Y %H:%i') LIKE '%${params.keyword}%'")
+					passageiro{
+						ilike('nome', "%${params.keyword}%")
+					}
+					origem{
+						or{
+							ilike('descricao', "%${params.keyword}%")
+							ilike('municipio', "%${params.keyword}%")
+							ilike('uf', "%${params.keyword}%")
+						}
+					}
+					destino{
+						or{
+							ilike('descricao', "%${params.keyword}%")
+							ilike('municipio', "%${params.keyword}%")
+							ilike('uf', "%${params.keyword}%")
+						}
+					}
+				}
+			}
+
+			if(viagens.size() == 0){
+				flash.message = message(code: 'default.pesquisar.semresultado')
+			}
+		}
+		else{
+			viagens = Viagem.list(params)
+		}
+
+		respond viagens, model:[viagemInstanceCount: viagens.totalCount, keyword: params.keyword]
 	}
 
 	def show(Viagem viagemInstance) {
@@ -111,45 +147,5 @@ class ViagemController {
 			}
 			'*'{ render status: NOT_FOUND }
 		}
-	}
-
-	def pesquisar = {
-		def viagens = null
-		def keyword = params.keyword
-
-		if (keyword){
-			viagens = Viagem.createCriteria().list{
-				or{
-					ilike ('objetivo', "%${keyword}%")
-					ilike ('status', "%${keyword}%")
-					sqlRestriction("DATE_FORMAT(ida,'%d/%m/%Y %H:%i') LIKE '%${keyword}%'")
-					sqlRestriction("DATE_FORMAT(volta,'%d/%m/%Y %H:%i') LIKE '%${keyword}%'")
-					passageiro{
-						ilike('nome', "%${keyword}%")
-					}
-					origem{
-						or{
-							ilike('descricao', "%${keyword}%")
-							ilike('logradouro', "%${keyword}%")
-							ilike('municipio', "%${keyword}%")
-							ilike('uf', "%${keyword}%")
-						}
-					}
-					destino{
-						or{
-							ilike('descricao', "%${keyword}%")
-							ilike('logradouro', "%${keyword}%")
-							ilike('municipio', "%${keyword}%")
-							ilike('uf', "%${keyword}%")
-						}
-					}
-				}
-			}
-
-			if(viagens.size() == 0){
-				flash.message = message(code: 'default.pesquisar.semresultado')
-			}
-		}
-		return new ModelAndView('/viagem/pesquisar',[viagemInstanceList:viagens, keyword: params.keyword])
 	}
 }

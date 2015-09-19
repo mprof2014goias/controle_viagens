@@ -13,11 +13,15 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="list" action="pesquisar"><g:message code="default.pesquisar.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-viagem" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<form class="pesquisar" name="pesquisar" method="get">
+				<span class="menuButton">
+					<g:textField name="keyword" value="${keyword}" placeholder="${message(code: 'default.pesquisar.label', default: 'Pesquisar')}" />
+				</span>
+			</form>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -64,7 +68,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${viagemInstanceCount ?: 0}" />
+				<g:paginate total="${viagemInstanceCount ?: 0}" params="${params}" />
 			</div>
 		</div>
 	</body>
