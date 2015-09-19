@@ -8,97 +8,134 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class PassageiroController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Passageiro.list(params), model:[passageiroInstanceCount: Passageiro.count()]
-    }
+	def index(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		def passageiros = null
 
-    def show(Passageiro passageiroInstance) {
-        respond passageiroInstance
-    }
+		if (params.keyword){
+			passageiros =  Passageiro.createCriteria().list(params) {
+				or{
+					ilike('nome', "%${params.keyword}%")
+					ilike('cpf', "%${params.keyword}%")
+					endereco{
+						or{
+							ilike('descricao', "%${params.keyword}%")
+							ilike('municipio', "%${params.keyword}%")
+							ilike('uf', "%${params.keyword}%")
+						}
+					}
+				}
+			}
 
-    def create() {
-        respond new Passageiro(params)
-    }
+			if(passageiros.size() == 0){
+				flash.message = message(code: 'default.pesquisar.semresultado')
+			}
+		}
+		else{
+			passageiros = Passageiro.list(params)
+		}
+		
+		respond passageiros, model:[passageiroInstanceCount: passageiros.totalCount, keyword: params.keyword]
+	}
 
-    @Transactional
-    def save(Passageiro passageiroInstance) {
-        if (passageiroInstance == null) {
-            notFound()
-            return
-        }
+	def show(Passageiro passageiroInstance) {
+		respond passageiroInstance
+	}
 
-        if (passageiroInstance.hasErrors()) {
-            respond passageiroInstance.errors, view:'create'
-            return
-        }
+	def create() {
+		respond new Passageiro(params)
+	}
 
-        passageiroInstance.save flush:true
+	@Transactional
+	def save(Passageiro passageiroInstance) {
+		if (passageiroInstance == null) {
+			notFound()
+			return
+		}
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'passageiro.label', default: 'Passageiro'), passageiroInstance.id])
-                redirect passageiroInstance
-            }
-            '*' { respond passageiroInstance, [status: CREATED] }
-        }
-    }
+		if (passageiroInstance.hasErrors()) {
+			respond passageiroInstance.errors, view:'create'
+			return
+		}
 
-    def edit(Passageiro passageiroInstance) {
-        respond passageiroInstance
-    }
+		passageiroInstance.save flush:true
 
-    @Transactional
-    def update(Passageiro passageiroInstance) {
-        if (passageiroInstance == null) {
-            notFound()
-            return
-        }
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.created.message', args: [
+					message(code: 'passageiro.label', default: 'Passageiro'),
+					passageiroInstance.id
+				])
+				redirect passageiroInstance
+			}
+			'*' { respond passageiroInstance, [status: CREATED] }
+		}
+	}
 
-        if (passageiroInstance.hasErrors()) {
-            respond passageiroInstance.errors, view:'edit'
-            return
-        }
+	def edit(Passageiro passageiroInstance) {
+		respond passageiroInstance
+	}
 
-        passageiroInstance.save flush:true
+	@Transactional
+	def update(Passageiro passageiroInstance) {
+		if (passageiroInstance == null) {
+			notFound()
+			return
+		}
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Passageiro.label', default: 'Passageiro'), passageiroInstance.id])
-                redirect passageiroInstance
-            }
-            '*'{ respond passageiroInstance, [status: OK] }
-        }
-    }
+		if (passageiroInstance.hasErrors()) {
+			respond passageiroInstance.errors, view:'edit'
+			return
+		}
 
-    @Transactional
-    def delete(Passageiro passageiroInstance) {
+		passageiroInstance.save flush:true
 
-        if (passageiroInstance == null) {
-            notFound()
-            return
-        }
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [
+					message(code: 'Passageiro.label', default: 'Passageiro'),
+					passageiroInstance.id
+				])
+				redirect passageiroInstance
+			}
+			'*'{ respond passageiroInstance, [status: OK] }
+		}
+	}
 
-        passageiroInstance.delete flush:true
+	@Transactional
+	def delete(Passageiro passageiroInstance) {
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Passageiro.label', default: 'Passageiro'), passageiroInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
+		if (passageiroInstance == null) {
+			notFound()
+			return
+		}
 
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'passageiro.label', default: 'Passageiro'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
+		passageiroInstance.delete flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.deleted.message', args: [
+					message(code: 'Passageiro.label', default: 'Passageiro'),
+					passageiroInstance.id
+				])
+				redirect action:"index", method:"GET"
+			}
+			'*'{ render status: NO_CONTENT }
+		}
+	}
+
+	protected void notFound() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [
+					message(code: 'passageiro.label', default: 'Passageiro'),
+					params.id
+				])
+				redirect action: "index", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }
