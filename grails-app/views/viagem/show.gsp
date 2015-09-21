@@ -90,6 +90,9 @@
 			<g:form url="[resource:viagemInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${viagemInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit" action="alterarstatus" params="[status: 'Autorizada']" resource="${viagemInstance}"><g:message code="default.button.autorizar.label" default="Autorizar" /></g:link>
+					<g:link class="edit" action="alterarstatus" params="[status: 'Negada']" resource="${viagemInstance}"><g:message code="default.button.negar.label" default="Negar" /></g:link>
+					<g:link class="edit" action="alterarstatus" params="[status: 'Realizada']" resource="${viagemInstance}"><g:message code="default.button.encerrar.label" default="Encerrar" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

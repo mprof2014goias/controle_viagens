@@ -1,7 +1,5 @@
 package controle_viagens
 
-import java.sql.Time
-
 class Viagem {
 	Integer id
 	Date ida
@@ -18,7 +16,6 @@ class Viagem {
 		objetivo(blank:false, widget:'textarea' )
 		status (blank:false, widget:'select', inList: [
 			'Autorizada',
-			'Cancelada',
 			'Negada',
 			'Pendente',
 			'Realizada'

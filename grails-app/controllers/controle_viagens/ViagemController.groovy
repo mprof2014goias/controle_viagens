@@ -113,6 +113,35 @@ class ViagemController {
 			'*'{ respond viagemInstance, [status: OK] }
 		}
 	}
+	
+	@Transactional
+	def alterarstatus(Viagem viagemInstance) {
+		if (viagemInstance == null) {
+			notFound()
+			return
+		}
+
+		if (viagemInstance.hasErrors()) {
+			respond viagemInstance.errors, view:'edit'
+			return
+		}
+		
+		viagemInstance.setStatus(params.status);
+
+		viagemInstance.save flush:true
+
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.updated.message', args: [
+					message(code: 'viagem.label', default: 'Viagem'),
+					viagemInstance.id
+				])
+				
+				redirect(action: "show", id:viagemInstance.id)
+			}
+			//'*'{ respond viagemInstance, [status: OK] }
+		}
+	}
 
 	@Transactional
 	def delete(Viagem viagemInstance) {
