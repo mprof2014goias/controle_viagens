@@ -34,9 +34,9 @@ environments {
         dataSource {
             dbCreate = "update"
            // url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
-			url = "jdbc:postgresql://ec2-54-204-20-164.compute-1.amazonaws.com:5432/d4mlm4cokf1970"
-			username = "quqqzorrbjyktx"
-			password = "aK40yzDprlkFKyLXQxh-k_a7Z7"
+			url = "jdbc:postgresql://ec2-54-217-202-110.eu-west-1.compute.amazonaws.com:5432/d2k1k7slflbc0e"
+			username = "yjefnnrtkhtvdu"
+			password = "XV2opiy0YkeaF1DmdTI0JJVQLF"
             properties {
                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                jmxEnabled = true
