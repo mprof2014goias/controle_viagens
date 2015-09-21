@@ -17,8 +17,10 @@ class ViagemController {
 				or{
 					ilike ('objetivo', "%${params.keyword}%")
 					ilike ('status', "%${params.keyword}%")
-					sqlRestriction("DATE_FORMAT(ida,'%d/%m/%Y %H:%i') LIKE '%${params.keyword}%'")
-					sqlRestriction("DATE_FORMAT(volta,'%d/%m/%Y %H:%i') LIKE '%${params.keyword}%'")
+					//sqlRestriction("DATE_FORMAT(ida,'%d/%m/%Y %H:%i') LIKE '%${params.keyword}%'")
+					sqlRestriction("to_char(ida, 'DD/MM/YYYY HH24:MI') LIKE '%${params.keyword}%'")
+					//sqlRestriction("DATE_FORMAT(volta,'%d/%m/%Y %H:%i') LIKE '%${params.keyword}%'")
+					sqlRestriction("to_char(volta, 'DD/MM/YYYY HH24:MI') LIKE '%${params.keyword}%'")
 					passageiro{
 						ilike('nome', "%${params.keyword}%")
 					}
